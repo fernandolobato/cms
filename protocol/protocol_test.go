@@ -34,7 +34,7 @@ func TestSignerInfo(t *testing.T) {
 	}
 
 	chain := []*x509.Certificate{cert}
-	if err = sd.AddSignerInfo(chain, priv.(*ecdsa.PrivateKey)); err != nil {
+	if err = sd.AddSignerInfo(chain, priv.(*ecdsa.PrivateKey), nil); err != nil {
 		t.Fatal(err)
 	}
 

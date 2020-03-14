@@ -108,7 +108,7 @@ func (tt *testTSA) Do(req timestamp.Request) (timestamp.Response, error) {
 		panic(err)
 	}
 
-	if err = tst.AddSignerInfo(tsa.ident.Chain(), tsa.ident.PrivateKey); err != nil {
+	if err = tst.AddSignerInfo(tsa.ident.Chain(), tsa.ident.PrivateKey, nil); err != nil {
 		panic(err)
 	}
 

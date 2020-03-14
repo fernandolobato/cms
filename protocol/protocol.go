@@ -600,7 +600,7 @@ func NewSignedData(eci EncapsulatedContentInfo) (*SignedData, error) {
 }
 
 // AddSignerInfo adds a SignerInfo to the SignedData.
-func (sd *SignedData) AddSignerInfo(chain []*x509.Certificate, signer crypto.Signer) error {
+func (sd *SignedData) AddSignerInfo(chain []*x509.Certificate, signer crypto.Signer, digest []byte) error {
 	// figure out which certificate is associated with signer.
 	pub, err := x509.MarshalPKIXPublicKey(signer.Public())
 	if err != nil {
@@ -675,7 +675,7 @@ func (sd *SignedData) AddSignerInfo(chain []*x509.Certificate, signer crypto.Sig
 		return err
 	}
 	// Hack this for weird purposes.
-	mdAttr, err := NewAttribute(oid.AttributeMessageDigest, content)
+	mdAttr, err := NewAttribute(oid.AttributeMessageDigest, digest)
 	if err != nil {
 		return err
 	}

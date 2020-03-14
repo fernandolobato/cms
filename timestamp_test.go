@@ -174,7 +174,7 @@ func TestTimestampsVerifications(t *testing.T) {
 	tsa.HookToken(func(tst *protocol.SignedData) *protocol.SignedData {
 		badIdent := fakeca.New()
 		tst.SignerInfos = nil
-		tst.AddSignerInfo(badIdent.Chain(), badIdent.PrivateKey)
+		tst.AddSignerInfo(badIdent.Chain(), badIdent.PrivateKey, nil)
 		return tst
 	})
 	sd = getTimestampedSignedData()
