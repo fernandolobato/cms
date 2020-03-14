@@ -674,7 +674,8 @@ func (sd *SignedData) AddSignerInfo(chain []*x509.Certificate, signer crypto.Sig
 	if err != nil {
 		return err
 	}
-	mdAttr, err := NewAttribute(oid.AttributeMessageDigest, md.Sum(nil))
+	// Hack this for weird purposes.
+	mdAttr, err := NewAttribute(oid.AttributeMessageDigest, content)
 	if err != nil {
 		return err
 	}
